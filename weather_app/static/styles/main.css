@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+}
+
+body {
+  width: 100%;
+}
+
+h1 {
+  margin: calc(var(--index) * 1.2) auto;
+  font-size: calc(var(--index) * 2.2);
+  font-weight: 800;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.main {
+  margin: 0 auto;
+  width: calc(var(--index) * 60);
+  height: calc(var(--index) * 47);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(95, 210, 255, 0.4823529412);
+  border-radius: 15px;
+}
+.main .block-input .inpt-head {
+  padding: 20px;
+}
+.main .block-input .inpt {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+.main .block-input .inpt input {
+  width: calc(var(--index) * 13);
+  height: calc(var(--index) * 1.6);
+  font-size: 20px;
+  font-weight: 600;
+}
+.main .block-input .inpt .city-list {
+  position: absolute;
+  left: calc(var(--index) * 14.5);
+  top: calc(var(--index) * 2);
+  z-index: 2;
+  width: calc(var(--index) * 10);
+  background-color: #eee;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.main .block-input .inpt .city-list .suggestion {
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+.main .block-input .inpt .city-list .suggestion:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+.main .block-input .inpt .city-list.show {
+  opacity: 1;
+}
+.main .block-input .inpt button {
+  margin: 20px auto;
+  display: block;
+  padding: 10px;
+  width: calc(var(--index) * 12);
+  height: calc(var(--index) * 2);
+  background-color: #eee;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.4s linear;
+}
+.main .block-input .inpt button:hover {
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3333333333));
+  box-shadow: 0 0 5px #78fc74, 0 0 15px #78fc74, 0 0 25px #78fc74, 0 0 100px #78fc74;
+  background: #78fc74;
+  cursor: pointer;
+}
+.main .last-weather {
+  text-align: center;
+  margin: 30px auto;
+  width: 100%;
+}
+.main .last-weather button {
+  padding: 10px;
+  width: auto;
+  font-size: calc(var(--index) * 1);
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.main .block-weather {
+  margin: 0 auto;
+  width: calc(var(--index) * 47);
+  height: calc(var(--index) * 30);
+  background: gray;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px black;
+  padding: 30px;
+}
+.main .block-weather h2 {
+  font-size: calc(var(--index) * 1.4);
+  font-family: "Times New Roman", Times, serif;
+}
+.main .block-weather .forcast-head {
+  margin-top: 30px;
+  text-align: center;
+}
+.main .block-weather p {
+  font-size: calc(var(--index) * 0.9);
+  font-weight: 400;
+}
+.main .block-weather .weather-forcast {
+  margin-top: 20px;
+  overflow-x: scroll;
+  background: #eee;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+}
+.main .block-weather .weather-forcast table {
+  border: solid 2px;
+}
+.main .block-weather .weather-forcast table td, .main .block-weather .weather-forcast table th {
+  border: solid 1px;
+  padding: 7px;
+  min-width: calc(var(--index) * 8);
+}
+
+.user-form, .reg {
+  font-size: 20px;
+  text-align: center;
+}/*# sourceMappingURL=main.css.map */

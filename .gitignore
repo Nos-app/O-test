@@ -1,0 +1,6 @@
+.o-test_env/
+chromedriver-win64/
+.cache.sqlite
+db.sqlite3
+__pycache__/
+migrations/

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/weather_app/static/styles/reg.css" />
+    <title>Регистрация</title>
+  </head>
+  <body>
+    <section class="main">
+      <section class="main">
+        <div class="form">
+          <form method="post">
+            {% csrf_token %}
+            <div class="background-text">Регистрация</div>
+            <div class="errors">
+              {% for field in form %} {% for error in field.errors %}
+              {{error|escape }} {% endfor %} {% endfor %}
+            </div>
+            <div class="inpt">
+              <input
+                type="name"
+                class="form-control"
+                placeholder="Логин"
+                name="username" />
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Пароль"
+                name="password1" />
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Повторите пароль"
+                name="password2" />
+              <div class="create-btn">
+                <button type="submit" class="btn">Зарегистрироваться</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </section>
+    </body>
+  </html>

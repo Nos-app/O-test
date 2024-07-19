@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <h1>Ваша история поиска</h1>
+</head>
+<body>
+    {% for element in history %}
+        <p>{{ element.city }} - {{ element.timestamp }}</p>
+    {% endfor %}
+    <a href="/">На главную</a>
+</body>
+</html>

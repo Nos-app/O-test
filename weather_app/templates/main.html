@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/weather_app/static/styles/main.css" />
+    <title>Погода</title>
+  </head>
+  <body>
+    {% if not user.is_authenticated %}
+    <div class="reg"><a href="reg">Зарегистрироваться</a> | <a
+        href="/accounts/login/">Вход</a></div>
+    {% endif %}
+    <div class="user-form"> {% if user.is_authenticated %}
+      <p>Добро пожаловать, {{ user.username }}!</p>
+      <a href="{% url 'logout' %}">Выход</a>
+      <div><a href="history/">История поиска</a></div>
+      {% else %}
+      <p>Пожалуйста, войдите.</p>
+      {% endif %}</div>
+    <h1>Узнай погоду в любом городе</h1>
+    <section class="main">
+      <form action="{% url 'weather-page' %}" method="post">
+        <div class="block-input">
+          <h2 class="inpt-head">
+            Введите в поле ниже название города и нажмите кнопку - "узнать
+            погоду".
+          </h2>
+          {% csrf_token %}
+          <div class="inpt">
+            <input
+              type="text"
+              id="cityInput"
+              name="city"
+              placeholder="Введите название города" />
+            <div class="city-list" id="suggestions"></div>
+            <button type="submit">Узнать погоду</button>
+          </div>
+        </div>
+        {% if not weather %}
+        <div class="last-weather">
+          <h3>Последние города в которых Вы смотрели погоду</h3>
+          <h3>Хотите узнать погоду в каком-нибудь из этих городов сейчас?</h3>
+          {% for city in cities_list %}
+          <button type="submit" id="city" value="{{ city }}">{{ city }}</button>
+          {% endfor %}
+        </div>
+      </form>
+      {% endif %} {% if weather %}
+      <div class="block-weather">
+        <div class="curent-weather">
+          <h2>Погода в городе {{ location_name }}</h2>
+          <p>Сейчас - {{ weather.4 }}</p>
+          <p>Текущая температура: {{ weather.1 }}°C</p>
+          <p>Скорость ветра: {{ weather.2 }} м/с</p>
+          <p>Направление ветра: {{ weather.3 }}</p>
+          <p>{{ weather.0 }}</p>
+        </div>
+        <h2 class="forcast-head">Прогноз на ближайшее время:</h2>
+        <div class="weather-forcast">
+          <table>
+            <tr>
+              {% for col in weather.5.date %}
+              <th>{{col}}</th>
+              {% endfor %}
+            </tr>
+            <tr>
+              {% for temp in weather.5.temperature_2m %}
+              <td><p>Температура {{temp}} °C</p></td>
+              {% endfor %}
+            </tr>
+            <tr>
+              {% for precipitation in weather.5.precipitation_probability %}
+              <td><p>{{precipitation}}</p></td>
+              {% endfor %}
+            </tr>
+            <tr>
+              {% for weather in weather.5.weather_code %}
+              <td><p>{{weather}}</p></td>
+              {% endfor %}
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+    <script src="/weather_app/static/scripts/main.js"></script>
+  </body>
+</html>
