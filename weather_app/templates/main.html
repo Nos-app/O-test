@@ -39,8 +39,10 @@
         </div>
         {% if not weather %}
         <div class="last-weather">
+          {% if cookie_exists %}
           <h3>Последние города в которых Вы смотрели погоду</h3>
           <h3>Хотите узнать погоду в каком-нибудь из этих городов сейчас?</h3>
+          {% endif %}
           {% for city in cities_list %}
           <button type="submit" id="city" value="{{ city }}">{{ city }}</button>
           {% endfor %}

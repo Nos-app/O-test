@@ -171,8 +171,9 @@ def get_weather(location_name):
 def main_page(request):
     cities_cookie = request.COOKIES.get("last_cities", "")
     cities_list = cities_cookie.split(",") if cities_cookie else []
+    cookie_exists = 'last_cities' in request.COOKIES
     return render(
-        request, "main.html", {"page": "main-page", "cities_list": cities_list}
+        request, "main.html", {"page": "main-page", "cities_list": cities_list, "cookie_exists": cookie_exists}
     )
 
 
